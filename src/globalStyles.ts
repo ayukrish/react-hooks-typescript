@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
+const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
   body {
     margin: 0;
     box-sizing: border-box;
@@ -33,3 +33,5 @@ export const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
     // background: $grey;
   }
 `;
+
+export default GlobalStyles;

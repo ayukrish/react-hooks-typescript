@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import ErrorBoundary from './components/ErrorBoundary';
 import Tabs from './components/Tabs';
 import ToggleTheme from './components/ToggleTheme';
-import { GlobalStyles } from './GlobalStyles';
+import GlobalStyles from './GlobalStyles';
 import routes from './routes';
 
 const App = () => {
