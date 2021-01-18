@@ -1,4 +1,4 @@
-# React-Hooks-Typescript Boilerplate
+# React Hooks Typescript Boilerplate
 
 ### Provides
 
