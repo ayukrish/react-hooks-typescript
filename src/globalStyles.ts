@@ -21,6 +21,18 @@ const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
     display: flex;
   }
 
+  .row {
+    flex-direction: row;
+  }
+  
+  .column {
+    flex-direction: column;
+  }
+  
+  .wrap {
+    flex-wrap: wrap;
+  }
+
   .space-between {
     justify-content: space-between;
   }
