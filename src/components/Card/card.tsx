@@ -8,40 +8,31 @@ interface CardProps {
 }
 
 const CardWrapper = styled.article`
-  width: 300px;
-  margin-bottom: 0.625rem;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 2px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  border-radius: 0.625rem;
+  width: 600px;
+  max-height: 320px;
   overflow: hidden;
-  background: rgb(51, 51, 51);
+  background: rgb(60, 62, 68);
+  border-radius: 0.5rem;
+  margin: 0.75rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 `;
 
 const CardHeader = styled.div`
   width: 100%;
-  background: black;
-  max-width: 300px;
-  max-height: 300px;
-  position: relative;
+  flex-basis: 30%;
 `;
 
 const CardInfo = styled.div`
   color: rgb(255, 152, 0);
   padding: 1.25rem;
+  flex-basis: 70%;
 `;
 
-const CardTitle = styled.div<{ imgSrc: string }>`
-  width: 100%;
-  opacity: 0.8;
-  position: ${(props) => (!props.imgSrc ? 'relative' : 'absolute')};
-  bottom: 0px;
-  background: ${(props) => (!props.imgSrc ? 'rgb(51, 51, 51)' : 'black')};
-  padding: 0.625rem;
-  h2 {
-    color: white;
-    font-size: 1.625rem;
-    font-weight: 400;
-  }
+const CardTitle = styled.h2`
+  color: white;
+  font-size: 1.625rem;
+  font-weight: 400;
 `;
 
 const CharacterText = styled.div`
@@ -64,14 +55,10 @@ const CharacterText = styled.div`
 `;
 
 const Card = ({ imgSrc = '', heading = '', dataObj = {} }: CardProps) => (
-  <CardWrapper className={'flex column'}>
-    <CardHeader>
-      {imgSrc && <img src={imgSrc} alt={heading} />}
-      <CardTitle imgSrc={imgSrc}>
-        <h2>{heading}</h2>
-      </CardTitle>
-    </CardHeader>
+  <CardWrapper className={'flex row'}>
+    <CardHeader>{imgSrc && <img src={imgSrc} alt={heading} />}</CardHeader>
     <CardInfo>
+      <CardTitle>{heading}</CardTitle>
       {Object.entries(dataObj).map(([key, value]) => (
         <CharacterText className={'flex align-center space-between'} key={key}>
           <span>{key}</span>

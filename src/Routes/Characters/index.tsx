@@ -5,7 +5,6 @@ import { service } from '../../httpService';
 
 const CharacterWrapper = styled.section`
   justify-content: space-around;
-  padding: 20px;
 `;
 
 const Characters = () => {

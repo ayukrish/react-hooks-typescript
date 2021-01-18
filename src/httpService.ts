@@ -13,6 +13,9 @@ export const service = (reqObj) => {
           return JSON.parse(res);
         });
       }
+      return response.text().then((res: any) => {
+        return Promise.reject(res);
+      });
     })
     .catch((error) => {
       console.log(error);
