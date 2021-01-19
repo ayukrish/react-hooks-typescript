@@ -1,17 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { withTheme } from 'styled-components';
 
 interface CardProps {
   imgSrc: string;
   heading: string;
   dataObj: object;
+  theme: { theme: 'light' | 'dark' };
 }
 
-const CardWrapper = styled.article`
+const CardWrapper = styled.article<{ theme: 'light' | 'dark' }>`
   width: 600px;
   max-height: 320px;
   overflow: hidden;
-  background: rgb(60, 62, 68);
+  background: ${(props) =>
+    props.theme === 'light' ? '#000' : 'rgb(60, 62, 68)'};
   border-radius: 0.5rem;
   margin: 0.75rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
@@ -35,7 +37,7 @@ const CardTitle = styled.h2`
   font-weight: 400;
 `;
 
-const CharacterText = styled.div`
+const CharacterText = styled.div<{ theme: 'light' | 'dark' }>`
   padding: 0.75rem 0px 0.375rem;
   border-bottom: 1px solid rgb(68, 68, 68);
 
@@ -48,19 +50,29 @@ const CharacterText = styled.div`
     &:first-child {
       font-size: 0.7rem;
       font-weight: 400;
-      color: rgb(158, 158, 158);
+      color: ${(props) =>
+        props.theme === 'light' ? '#fff' : 'rgb(158, 158, 158)'};
       text-align: left;
     }
   }
 `;
 
-const Card = ({ imgSrc = '', heading = '', dataObj = {} }: CardProps) => (
-  <CardWrapper className={'flex row'}>
+const Card = ({
+  imgSrc = '',
+  heading = '',
+  dataObj = {},
+  theme
+}: CardProps) => (
+  <CardWrapper className={'flex row'} theme={theme.theme}>
     <CardHeader>{imgSrc && <img src={imgSrc} alt={heading} />}</CardHeader>
     <CardInfo>
       <CardTitle>{heading}</CardTitle>
       {Object.entries(dataObj).map(([key, value]) => (
-        <CharacterText className={'flex align-center space-between'} key={key}>
+        <CharacterText
+          className={'flex align-center space-between'}
+          key={key}
+          theme={theme.theme}
+        >
           <span>{key}</span>
           <span>{value}</span>
         </CharacterText>
@@ -69,4 +81,4 @@ const Card = ({ imgSrc = '', heading = '', dataObj = {} }: CardProps) => (
   </CardWrapper>
 );
 
-export default Card;
+export default withTheme(Card as any);
