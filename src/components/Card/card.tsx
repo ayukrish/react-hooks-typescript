@@ -64,7 +64,9 @@ const Card = ({
   theme
 }: CardProps) => (
   <CardWrapper className={'flex row'} theme={theme.theme}>
-    <CardHeader>{imgSrc && <img src={imgSrc} alt={heading} />}</CardHeader>
+    <CardHeader>
+      <img src={imgSrc} alt={heading} />
+    </CardHeader>
     <CardInfo>
       <CardTitle>{heading}</CardTitle>
       {Object.entries(dataObj).map(([key, value]) => (
