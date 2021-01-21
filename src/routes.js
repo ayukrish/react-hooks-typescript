@@ -6,18 +6,18 @@ const routes = [
   {
     path: '/',
     component: Characters,
-    exact: true
+    exact: true,
   },
   {
     path: '/locations',
     component: Locations,
-    exact: true
+    exact: true,
   },
   {
     path: '/episodes',
     component: Episodes,
-    exact: true
-  }
+    exact: true,
+  },
 ];
 
 export default routes;

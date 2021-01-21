@@ -1,38 +1,44 @@
 import React, { PureComponent } from 'react';
 
-interface ErrorBoundaryState {
+interface IErrorBoundaryState {
   hasError: boolean;
+  errorInfo: IErrorInfo;
 }
 
-interface ErrorBoundaryProps {
+interface IErrorInfo {
+  componentStack: string;
+}
+
+interface IErrorBoundaryProps {
   children?: React.ReactNode;
 }
 
 class ErrorBoundary extends PureComponent<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
+  IErrorBoundaryProps,
+  IErrorBoundaryState
 > {
-  static defaultProps: { children: any };
-  constructor(props) {
+  constructor(props: IErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: null };
+    this.state = { hasError: false, errorInfo: null };
   }
 
-  componentDidCatch(error) {
-    // Catch errors in any components below and re-render with error message
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  componentDidCatch(error, errorInfo) {
     this.setState({
-      hasError: error
+      hasError: !!error,
+      errorInfo,
     });
-    // You can also log error messages to an error reporting service here
   }
 
-  render() {
-    if (this.state.hasError) {
+  render(): React.ReactNode {
+    const { hasError, errorInfo } = this.state;
+    const { children } = this.props;
+    if (hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <h1>{errorInfo.componentStack}</h1>;
     }
 
-    return this.props.children;
+    return children;
   }
 }
 

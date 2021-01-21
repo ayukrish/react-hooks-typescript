@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { tabItems } from './constants';
+import { useLocation, Link } from 'react-router-dom';
+import TabItems from './constants';
+
+interface ITabProps {
+  theme: string;
+}
 
 const TabWrapper = styled.section`
   display: flex;
@@ -23,13 +26,14 @@ const Tab = styled.div<{ isActive: boolean; theme: 'light' | 'dark' }>`
   }
 `;
 
-interface tabProps {
-  theme: string;
-}
-
-const Tabs = ({ theme }: tabProps) => {
-  const [selectedTab, setSelectedTab] = useState(tabItems[0].id);
+const Tabs: React.FunctionComponent<ITabProps> = ({ theme }: ITabProps) => {
+  const [selectedTab, setSelectedTab] = useState(TabItems[0].id);
   const location = useLocation();
+
+  const getActiveTab = (route: string) => {
+    const index = TabItems.findIndex((item) => item.routePath === route);
+    return index === -1 ? TabItems[0] : TabItems[index];
+  };
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -37,21 +41,12 @@ const Tabs = ({ theme }: tabProps) => {
     setSelectedTab(tabDetails.id);
   }, [location]);
 
-  const getActiveTab = (route: string) => {
-    const index = tabItems.findIndex((item) => item.routePath === route);
-    return index === -1 ? tabItems[0] : tabItems[index];
-  };
-
-  const getTabItems = () => {
-    return (
-      tabItems &&
-      tabItems.map((item) => (
-        <Tab key={item.id} isActive={selectedTab === item.id} theme={theme}>
-          <Link to={item.routePath}>{item.name}</Link>
-        </Tab>
-      ))
-    );
-  };
+  const getTabItems = () =>
+    TabItems.map((item) => (
+      <Tab key={item.id} isActive={selectedTab === item.id} theme={theme}>
+        <Link to={item.routePath}>{item.name}</Link>
+      </Tab>
+    ));
 
   return <TabWrapper>{getTabItems()}</TabWrapper>;
 };

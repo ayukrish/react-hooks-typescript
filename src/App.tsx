@@ -7,11 +7,11 @@ import ToggleTheme from './components/ToggleTheme';
 import GlobalStyles from './GlobalStyles';
 import routes from './routes';
 
-const App = () => {
+const App: React.FunctionComponent = () => {
   const [theme, setTheme] = useState('dark');
-  const themeToggler = () => {
+  const themeToggler = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
+
   return (
     <ErrorBoundary>
       <ThemeProvider theme={{ theme }}>

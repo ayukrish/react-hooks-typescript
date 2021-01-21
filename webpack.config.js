@@ -3,10 +3,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'public')
+    path: path.join(__dirname, 'public'),
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -15,23 +15,23 @@ module.exports = {
       {
         loader: 'babel-loader',
         test: /\.(ts|tsx|js)$/,
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx'],
   },
   devServer: {
     port: 3030,
     hot: true,
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'public')
+    contentBase: path.join(__dirname, 'public'),
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
-      template: path.resolve(__dirname, './src/index.html')
-    })
-  ]
+      template: path.resolve(__dirname, './src/index.html'),
+    }),
+  ],
 };
