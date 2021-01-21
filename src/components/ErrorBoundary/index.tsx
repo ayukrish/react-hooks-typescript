@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 interface IErrorBoundaryState {
   hasError: boolean;
-  errorInfo: {};
+  errorInfo: IErrorInfo;
 }
 
 interface IErrorInfo {
