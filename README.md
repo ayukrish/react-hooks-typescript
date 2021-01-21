@@ -16,3 +16,11 @@
 ### Building
 
 - webpack 5.x
+
+### Code Quality
+
+- eslint 7.x
+- husky ^4.x
+- lint-staged ^10.7
+
+`npm run lint`
