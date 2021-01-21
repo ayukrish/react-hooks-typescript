@@ -3,7 +3,7 @@
     "eslint",
     "prettier --write"
   ],
-  "**/*.+(css|scss|json|md)": [
+  "**/*.+(json|md)": [
     "prettier --write"
   ]
 }
