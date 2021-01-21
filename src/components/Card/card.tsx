@@ -1,11 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled, { withTheme } from 'styled-components';
 
-interface CardProps {
-  imgSrc: string;
+interface ICardProps {
+  imgSrc?: string;
   heading: string;
-  dataObj: object;
+  dataObj: IDataObj;
   theme: { theme: 'light' | 'dark' };
+}
+
+interface IDataObj {
+  STATUS?: string;
+  SPECIES?: string;
+  GENDER?: string;
+  ORIGIN?: string;
+  LOCATION?: string;
+  EPISODE?: string;
+  'AIR DATE'?: string;
+  TYPE?: string;
+  DIMENSION?: string;
 }
 
 const CardWrapper = styled.article<{ theme: 'light' | 'dark' }>`
@@ -57,13 +69,13 @@ const CharacterText = styled.div<{ theme: 'light' | 'dark' }>`
   }
 `;
 
-const Card = ({
+const Card: React.FunctionComponent<ICardProps> = ({
   imgSrc = '',
   heading = '',
   dataObj = {},
-  theme
-}: CardProps) => (
-  <CardWrapper className={'flex row'} theme={theme.theme}>
+  theme,
+}: ICardProps) => (
+  <CardWrapper className="flex row" theme={theme.theme}>
     <CardHeader>
       <img src={imgSrc} alt={heading} />
     </CardHeader>
@@ -71,7 +83,7 @@ const Card = ({
       <CardTitle>{heading}</CardTitle>
       {Object.entries(dataObj).map(([key, value]) => (
         <CharacterText
-          className={'flex align-center space-between'}
+          className="flex align-center space-between"
           key={key}
           theme={theme.theme}
         >
@@ -83,4 +95,4 @@ const Card = ({
   </CardWrapper>
 );
 
-export default withTheme(Card as any);
+export default withTheme(Card);

@@ -1,0 +1,27 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-airbnb-typescript",
+    "plugin:react-hooks/recommended",
+  ],
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": "./tsconfig.eslint.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-confusing-arrow": 0,
+    "implicit-arrow-linebreak": 0,
+    "@typescript-eslint/indent": 0,
+    "react/require-default-props": 0
+  }
+}

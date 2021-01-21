@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface btnProps {
-  themeToggler: any;
+interface IBtnProps {
+  themeToggler: () => void;
   theme: string;
 }
 
@@ -41,13 +41,14 @@ const Input = styled.input`
   display: none;
 `;
 
-const ToggleTheme = ({ themeToggler, theme }: btnProps) => {
-  return (
-    <>
-      <Input id="cb2" type="checkbox" onClick={themeToggler} />
-      <Label htmlFor="cb2" theme={theme} />
-    </>
-  );
-};
+const ToggleTheme: React.FunctionComponent<IBtnProps> = ({
+  themeToggler,
+  theme,
+}: IBtnProps) => (
+  <>
+    <Input id="cb2" type="checkbox" onClick={themeToggler} />
+    <Label htmlFor="cb2" theme={theme} />
+  </>
+);
 
 export default ToggleTheme;
