@@ -34,7 +34,6 @@ class ErrorBoundary extends PureComponent<
     const { hasError, errorInfo } = this.state;
     const { children } = this.props;
     if (hasError) {
-      // You can render any custom fallback UI
       return <h1>{errorInfo.componentStack}</h1>;
     }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from '../../components/Card/card';
+import Card from '../../components/Card';
 import service from '../../httpService';
 
 const LocationWrapper = styled.section`
@@ -21,7 +21,7 @@ const Locations: React.FunctionComponent = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   return (
     <LocationWrapper className="flex wrap">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from '../../components/Card/card';
+import Card from '../../components/Card';
 import service from '../../httpService';
 
 const EpisodeWrapper = styled.section`
@@ -21,7 +21,7 @@ const Episodes: React.FunctionComponent = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   return (
     <EpisodeWrapper className="flex wrap">
