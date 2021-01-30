@@ -1,6 +1,6 @@
-import Characters from './Routes/Characters';
-import Locations from './Routes/Locations';
-import Episodes from './Routes/Episodes';
+import Characters from './routes/characters';
+import Locations from './routes/locations';
+import Episodes from './routes/episodes';
 
 const routes = [
   {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import ErrorBoundary from './components/ErrorBoundary';
-import Tabs from './components/Tabs';
-import ToggleTheme from './components/ToggleTheme';
+import ErrorBoundary from './components/errorBoundary';
+import Tabs from './components/tabs';
+import ToggleTheme from './components/toggleTheme';
 import GlobalStyles from './GlobalStyles';
 import routes from './routes';
 
