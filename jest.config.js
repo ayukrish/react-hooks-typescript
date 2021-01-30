@@ -16,8 +16,8 @@ module.exports = {
   moduleDirectories: ['node_modules', 'src'],
   modulePaths: ['<rootDir>', 'node_modules'],
   collectCoverageFrom: [
-    'src/Components/**/*.{ts,tsx}',
-    'src/Routes/**/*.{ts,tsx}',
+    'src/components/**/*.{ts,tsx}',
+    'src/routes/**/*.{ts,tsx}',
   ],
   coveragePathIgnorePatterns: [
     'node_modules',
