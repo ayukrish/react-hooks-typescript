@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card> should render Card in dark mode 1`] = `
+<article
+  class="sc-bdfBwQ evGFoE flex row"
+>
+  <div
+    class="sc-gsTCUz cibcoK"
+  >
+    <img
+      alt=""
+      src=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm inVonk"
+  >
+    <h2
+      class="sc-hKgILt hyrQdz"
+    />
+  </div>
+</article>
+`;
+
+exports[`<Card> should render Card in light mode 1`] = `
+<article
+  class="sc-bdfBwQ ehcuxJ flex row"
+>
+  <div
+    class="sc-gsTCUz cibcoK"
+  >
+    <img
+      alt=""
+      src=""
+    />
+  </div>
+  <div
+    class="sc-dlfnbm inVonk"
+  >
+    <h2
+      class="sc-hKgILt hyrQdz"
+    />
+  </div>
+</article>
+`;
