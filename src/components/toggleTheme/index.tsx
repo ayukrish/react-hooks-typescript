@@ -46,8 +46,8 @@ const ToggleTheme: React.FunctionComponent<IBtnProps> = ({
   theme,
 }: IBtnProps) => (
   <>
-    <Input id="cb2" type="checkbox" onClick={themeToggler} />
-    <Label htmlFor="cb2" theme={theme} />
+    <Input id="themeToggler" type="checkbox" onClick={themeToggler} />
+    <Label htmlFor="themeToggler" data-xpath="themeToggler" theme={theme} />
   </>
 );
 
