@@ -4,7 +4,7 @@ import { useLocation, Link } from 'react-router-dom';
 import TabItems from './constants';
 
 interface ITabProps {
-  theme: string;
+  theme: 'light' | 'dark';
 }
 
 const TabWrapper = styled.section`
