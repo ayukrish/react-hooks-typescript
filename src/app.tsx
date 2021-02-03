@@ -8,7 +8,7 @@ import GlobalStyles from './GlobalStyles';
 import routes from './routes';
 
 const App: React.FunctionComponent = () => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const themeToggler = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
 

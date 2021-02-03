@@ -1,14 +1,7 @@
 describe('Episodes Page Test', () => {
-  it('Does not do much!', () => {
-    expect(true).to.equal(true);
-  });
-
-  it('Visits the Kitchen Sink', () => {
-    cy.visit('https://example.cypress.io');
-  });
-
-  it('finds the content "type"', () => {
-    cy.visit('https://example.cypress.io');
-    cy.contains('type').click();
+  it('Visits the Episode Page', () => {
+    cy.visit('http://localhost:3030/episodes');
+    cy.get('[data-xpath="episodeWrapper"]').should('have.length', 1);
+    cy.get('[data-xpath="cardWrapper"]').should('have.length', 20);
   });
 });

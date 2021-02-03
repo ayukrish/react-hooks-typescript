@@ -24,7 +24,7 @@ const Episodes: React.FunctionComponent = () => {
   });
 
   return (
-    <EpisodeWrapper className="flex wrap">
+    <EpisodeWrapper className="flex wrap" data-xpath="episodeWrapper">
       {episodes.map((item) => (
         <Card
           key={item.id}

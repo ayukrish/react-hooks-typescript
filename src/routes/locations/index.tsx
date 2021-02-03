@@ -24,7 +24,7 @@ const Locations: React.FunctionComponent = () => {
   });
 
   return (
-    <LocationWrapper className="flex wrap">
+    <LocationWrapper className="flex wrap" data-xpath="locationWrapper">
       {locations.map((item) => (
         <Card
           key={item.id}
