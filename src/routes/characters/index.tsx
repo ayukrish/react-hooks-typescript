@@ -24,7 +24,7 @@ const Characters: React.FunctionComponent = () => {
   });
 
   return (
-    <CharacterWrapper className="flex wrap">
+    <CharacterWrapper className="flex wrap" data-xpath="characterWrapper">
       {characters.map((item) => (
         <Card
           key={item.id}

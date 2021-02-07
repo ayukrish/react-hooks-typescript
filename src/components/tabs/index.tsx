@@ -44,7 +44,9 @@ const Tabs: React.FunctionComponent<ITabProps> = ({ theme }: ITabProps) => {
   const getTabItems = () =>
     TabItems.map((item) => (
       <Tab key={item.id} isActive={selectedTab === item.id} theme={theme}>
-        <Link to={item.routePath}>{item.name}</Link>
+        <Link data-xpath={`link_${item.id}`} to={item.routePath}>
+          {item.name}
+        </Link>
       </Tab>
     ));
 

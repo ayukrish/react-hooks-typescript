@@ -75,7 +75,11 @@ const Card: React.FunctionComponent<ICardProps> = ({
   dataObj = {},
   theme,
 }: ICardProps) => (
-  <CardWrapper className="flex row" theme={theme.theme}>
+  <CardWrapper
+    className="flex row"
+    theme={theme.theme}
+    data-xpath="cardWrapper"
+  >
     <CardHeader>
       <img src={imgSrc} alt={heading} />
     </CardHeader>
