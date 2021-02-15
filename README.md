@@ -24,3 +24,11 @@
 - lint-staged ^10.7
 
 `npm run lint`
+
+### E2E Testing
+
+- @testing-library/cypress ^7.x
+- cypress ^6.x
+
+`npm run cypress:run`
+`npm run cypress:open`
