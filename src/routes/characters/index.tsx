@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../components/card';
+import Pagination from '../../components/Pagination';
 import service from '../../httpService';
 
 const CharacterWrapper = styled.section`
@@ -9,19 +10,20 @@ const CharacterWrapper = styled.section`
 
 const Characters: React.FunctionComponent = () => {
   const [characters, setCharacters] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const getData = async (page = 0) => {
+  const getData = async (pageNo = 1) => {
     const data = await service({
       url: 'https://rickandmortyapi.com/api/character',
       method: 'get',
-      page,
+      page: pageNo,
     });
     setCharacters(data?.results || []);
   };
 
   useEffect(() => {
-    getData();
-  });
+    getData(currentPage);
+  }, [currentPage]);
 
   return (
     <CharacterWrapper className="flex wrap" data-xpath="characterWrapper">
@@ -39,6 +41,14 @@ const Characters: React.FunctionComponent = () => {
           heading={item?.name}
         />
       ))}
+      <Pagination
+        contentLength={characters?.length || 0}
+        currentPage={currentPage}
+        limit={20}
+        onChange={(pageNo) => {
+          setCurrentPage(pageNo);
+        }}
+      />
     </CharacterWrapper>
   );
 };

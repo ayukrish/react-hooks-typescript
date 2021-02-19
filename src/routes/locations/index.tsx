@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../components/card';
+import Pagination from '../../components/Pagination';
 import service from '../../httpService';
 
 const LocationWrapper = styled.section`
@@ -9,19 +10,20 @@ const LocationWrapper = styled.section`
 
 const Locations: React.FunctionComponent = () => {
   const [locations, setLocations] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const getData = async (page = 0) => {
+  const getData = async (pageNo = 1) => {
     const data = await service({
       url: 'https://rickandmortyapi.com/api/location',
       method: 'get',
-      page,
+      page: pageNo,
     });
     setLocations(data?.results || []);
   };
 
   useEffect(() => {
-    getData();
-  });
+    getData(currentPage);
+  }, [currentPage]);
 
   return (
     <LocationWrapper className="flex wrap" data-xpath="locationWrapper">
@@ -35,6 +37,14 @@ const Locations: React.FunctionComponent = () => {
           heading={item?.name}
         />
       ))}
+      <Pagination
+        contentLength={locations?.length || 0}
+        currentPage={currentPage}
+        limit={20}
+        onChange={(pageNo) => {
+          setCurrentPage(pageNo);
+        }}
+      />
     </LocationWrapper>
   );
 };
