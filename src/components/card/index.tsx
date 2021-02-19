@@ -4,20 +4,26 @@ import styled, { withTheme } from 'styled-components';
 interface ICardProps {
   imgSrc?: string;
   heading: string;
-  dataObj: IDataObj;
+  dataObj: ICharDataObj | ILocationDataObj | IEpisodeDataObj;
   theme: { theme: 'light' | 'dark' };
 }
 
-interface IDataObj {
+interface ICharDataObj {
   STATUS?: string;
   SPECIES?: string;
   GENDER?: string;
   ORIGIN?: string;
   LOCATION?: string;
-  EPISODE?: string;
-  'AIR DATE'?: string;
+}
+
+interface ILocationDataObj {
   TYPE?: string;
   DIMENSION?: string;
+}
+
+interface IEpisodeDataObj {
+  EPISODE?: string;
+  'AIR DATE'?: string;
 }
 
 const CardWrapper = styled.article<{ theme: 'light' | 'dark' }>`
