@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../components/card';
-import Pagination from '../../components/Pagination';
+import Pagination from '../../components/pagination';
 import service from '../../httpService';
 
 const EpisodeWrapper = styled.section`
