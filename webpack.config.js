@@ -32,6 +32,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
+      favicon: path.resolve(__dirname, './favicon.ico'),
     }),
   ],
 };
