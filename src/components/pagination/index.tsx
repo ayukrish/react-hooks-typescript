@@ -16,7 +16,6 @@ const PaginationWrapper = styled.div<{ theme: 'light' | 'dark' }>`
   button {
     cursor: pointer;
     padding: 16px 20px;
-    background: transparent;
     margin: 0;
     background: ${(props) =>
       props.theme === 'light' ? '#fff' : 'transparent'};
