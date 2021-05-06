@@ -5,7 +5,7 @@
 - react ^17.x
 - react-router-dom ^5.x
 - styled-components ^5.x
-- typescript ^5.x
+- typescript ^4.x
 
 ### Development
 
