@@ -40,10 +40,6 @@ const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
   .align-center {
     align-items: center
   }
-
-  .section {
-    // background: $grey;
-  }
 `;
 
 export default GlobalStyles;
