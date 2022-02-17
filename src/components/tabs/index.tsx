@@ -27,7 +27,7 @@ const Tab = styled.div<{ isActive: boolean; theme: 'light' | 'dark' }>`
 `;
 
 const Tabs: React.FunctionComponent<ITabProps> = ({ theme }: ITabProps) => {
-  const [selectedTab, setSelectedTab] = useState(TabItems[0].id);
+  const [selectedTab, setSelectedTab] = useState<string>(TabItems[0].id);
   const location = useLocation();
 
   const getActiveTab = (route: string) => {
