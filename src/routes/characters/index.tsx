@@ -1,33 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { gql, useQuery } from '@apollo/client';
 import styled from 'styled-components';
 import Card from '../../components/card';
 import Pagination from '../../components/pagination';
-import service from '../../httpService';
 
 const CharacterWrapper = styled.section`
   justify-content: space-around;
 `;
 
+const GET_CHARACTERS = gql`
+  query GetCharacters($page: Int!) {
+    characters(page: $page) {
+      results {
+        name
+        image
+        status
+        id
+        status
+        species
+        gender
+      }
+    }
+  }
+`;
+
 const Characters: React.FunctionComponent = () => {
-  const [characters, setCharacters] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
-  const getData = async (pageNo = 1) => {
-    const data = await service({
-      url: 'https://rickandmortyapi.com/api/character',
-      method: 'get',
-      page: pageNo,
-    });
-    setCharacters(data?.results || []);
-  };
-
-  useEffect(() => {
-    getData(currentPage);
-  }, [currentPage]);
-
+  const { loading, error, data, refetch } = useQuery(GET_CHARACTERS, {
+    variables: { page: currentPage },
+  });
+  const characters = data?.characters?.results || [];
+  if (loading) return <div>Loading...</div>;
+  if (error) {
+    return <div>{error.message}</div>;
+  }
   return (
     <CharacterWrapper className="flex wrap" data-xpath="characterWrapper">
-      {characters.map((item) => (
+      {characters?.map((item) => (
         <Card
           key={item.id}
           dataObj={{
@@ -46,6 +55,9 @@ const Characters: React.FunctionComponent = () => {
         currentPage={currentPage}
         limit={20}
         onChange={(pageNo) => {
+          refetch({
+            page: pageNo,
+          });
           setCurrentPage(pageNo);
         }}
       />

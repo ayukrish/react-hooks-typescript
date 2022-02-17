@@ -5,11 +5,6 @@ const TabItems = [
     routePath: '/',
   },
   {
-    name: 'Locations',
-    id: 'locations',
-    routePath: '/locations',
-  },
-  {
     name: 'Episodes',
     id: 'episodes',
     routePath: '/episodes',

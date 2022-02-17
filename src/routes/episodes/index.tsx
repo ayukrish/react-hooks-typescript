@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
 import styled from 'styled-components';
 import Card from '../../components/card';
-import Pagination from '../../components/pagination';
-import service from '../../httpService';
 
 const EpisodeWrapper = styled.section`
   justify-content: space-around;
 `;
 
+const GET_EPISODES = gql`
+  query {
+    episodesByIds(ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+      id
+      name
+      episode
+      air_date
+    }
+  }
+`;
+
 const Episodes: React.FunctionComponent = () => {
-  const [episodes, setEpisodes] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const getData = async (pageNo = 1) => {
-    const data = await service({
-      url: 'https://rickandmortyapi.com/api/episode',
-      method: 'get',
-      page: pageNo,
-    });
-    setEpisodes(data?.results || []);
-  };
-
-  useEffect(() => {
-    getData(currentPage);
-  }, [currentPage]);
-
+  const { loading, error, data } = useQuery(GET_EPISODES);
+  const episodes = data?.episodesByIds || [];
+  if (loading) return <div>Loading...</div>;
+  if (error) {
+    // eslint-disable-next-line react/jsx-one-expression-per-line
+    return <div>Error! {error.message}</div>;
+  }
   return (
     <EpisodeWrapper className="flex wrap" data-xpath="episodeWrapper">
       {episodes.map((item) => (
@@ -37,14 +38,6 @@ const Episodes: React.FunctionComponent = () => {
           heading={item?.name}
         />
       ))}
-      <Pagination
-        contentLength={episodes?.length || 0}
-        currentPage={currentPage}
-        limit={20}
-        onChange={(pageNo) => {
-          setCurrentPage(pageNo);
-        }}
-      />
     </EpisodeWrapper>
   );
 };
